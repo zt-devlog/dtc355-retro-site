@@ -1,0 +1,326 @@
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+/* Reset and Base Styles */
+/* Reset Styles */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* Base Styles */
+body {
+  font-family: "Comic Sans MS", cursive;
+  background: #003366 url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10 10"><rect width="10" height="10" fill="%23002244"/><circle cx="5" cy="5" r="0.5" fill="%23004488"/></svg>') repeat;
+  color: #FFFFFF;
+  line-height: 1.6;
+  cursor: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2svg" viewBox="0 0 20 20"><circle cx="10" cy="10" r="8" fill="%236699CC"/></svg>') 10 10, auto;
+}
+
+/* Layout */
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 1rem;
+  background: rgba(0, 0, 51, 0.8);
+  border: 3px solid #6699CC;
+  border-radius: 8px;
+  box-shadow: 0 0 20px rgba(102, 153, 204, 0.5);
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.header h1 {
+  font-size: 3rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+/* Header */
+.header {
+  background: linear-gradient(to bottom, #000033, #000066);
+  padding: 1.5rem;
+  border: 3px solid #6699CC;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+
+
+ /* Navigation Styles */
+.main-nav {
+    width: 100%;
+    background: linear-gradient(to bottom, #000033, #000066);
+    padding: 1rem;
+    border: 3px solid #6699CC;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+    position: relative;
+}
+
+.nav-header {
+    display: none;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 1rem;
+}
+
+.menu-icon {
+    display: none; /* Hidden by default on desktop */
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.5rem;
+    cursor: pointer;
+    padding: 0.5rem;
+    transition: transform 0.3s ease;
+}
+
+.menu-icon:hover {
+    transform: scale(1.1);
+}
+
+.nav-links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.close-icon {
+  display: none;
+  background: none;
+  border: none;
+  color: white;
+  font-size: 1.5rem;
+  cursor: pointer;
+  padding: 0.5rem;
+  transition: transform 0.3s ease;
+}
+
+.nav-links li {
+    margin: 0;
+}
+
+.nav-links a {
+    display: block;
+    color: white;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    border: 2px solid #6699CC;
+    border-radius: 20px;
+    transition: all 0.3s;
+}
+
+.nav-links a:hover {
+    background: linear-gradient(to bottom, #6699CC, #336699);
+    transform: scale(1.05);
+    box-shadow: 0 0 10px rgba(102, 153, 204, 0.8);
+}
+
+/* Mobile Navigation */
+@media (max-width: 768px) {
+    .nav-header {
+        display: flex; /* Show the nav-header on mobile */
+        justify-content: space-between;
+        align-items: center;
+        padding-bottom: 1rem;
+    }
+
+    .menu-icon {
+        display: block;
+        background: none;
+        border: none;
+        color: white;
+        font-size: 1.5rem;
+        cursor: pointer;
+        padding: 0.5rem;
+        transition: transform 0.3s ease;
+    }
+
+    .menu-icon:hover {
+        transform: scale(1.1);
+    }
+
+    .close-icon {
+        display: none;
+        background: none;
+        border: none;
+        color: white;
+        font-size: 1.5rem;
+        cursor: pointer;
+        padding: 0.5rem;
+        transition: transform 0.3s ease;
+    }
+
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        text-align: center;
+        padding-top: 1rem;
+    }
+
+    .nav-links.active {
+        display: flex;
+    }
+
+    .nav-links li {
+        margin: 0.5rem 0;
+    }
+
+      .main-nav.active .menu-icon {
+    display: none;
+  }
+
+  .main-nav.active .close-icon {
+    display: block;
+  }
+
+    .nav-links a {
+        width: 100%;
+    }
+}
+/* Profile Section */
+.profile {
+  background: linear-gradient(to bottom, #000033, #000066);
+  padding: 1.5rem;
+  border: 3px solid #6699CC;
+  border-radius: 8px;
+  margin-bottom: 1.5rem;
+  display: flex;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.profile-image {
+  width: 200px;
+  height: 200px;
+  border: 5px solid #6699CC;
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(102, 153, 204, 0.6);
+  transition: transform 0.3s;
+}
+
+.profile-image:hover {
+  transform: scale(1.05);
+}
+
+.profile-info {
+  flex: 1;
+  min-width: 250px;
+}
+
+.profile-info h2 {
+  margin-bottom: 1rem;
+}
+
+/* Blog Posts */
+.blog-post {
+  background: linear-gradient(to bottom, #000033, #000066);
+  padding: 1.5rem;
+  border: 3px solid #6699CC;
+  border-radius: 8px;
+  margin-bottom: 1.5rem;
+}
+
+.blog-title {
+  color: #6699CC;
+  margin-bottom: 1rem;
+  text-shadow: 1px 1px 3px #003366;
+}
+
+/* Friends Section */
+.friend-space {
+  background: linear-gradient(to bottom, #000033, #000066);
+  padding: 1.5rem;
+  border: 3px solid #6699CC;
+  border-radius: 8px;
+}
+
+.friend-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.friend {
+  text-align: center;
+  transition: transform 0.3s;
+}
+
+.friend:hover {
+  transform: scale(1.1);
+}
+
+.friend img {
+  width: 80px;
+  height: 80px;
+  border: 3px solid #6699CC;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(102, 153, 204, 0.4);
+}
+
+/* Glitter Text Effect */
+.glitter-text {
+  background: linear-gradient(90deg, 
+    #ff0000, #ff7f00, #ffff00, #00ff00, 
+    #0000ff, #4b0082, #8f00ff, #ff0000);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: rainbow 6s linear infinite;
+  text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+}
+
+@keyframes rainbow {
+  0% { background-position: 0% center; }
+  100% { background-position: 200% center; }
+}
+

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Deliah's Video Blog</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="nav" href="nav.html"> </head>
+
+<body>
+  <div class="container">
+    <header class="header">
+      <h1 class="glitter-text">Deliah's Video Blog</h1> </header>
+    <nav class="main-nav">
+      <div class="nav-header">
+        <button class="menu-icon">☰</button>
+        <button class="close-icon">✕</button>
+      </div>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="postone.html">Post #1</a></li>
+        <li><a href="posttwo.html">Post #2</a></li>
+        <li><a href="postthree.html">Post #3</a></li>
+        <li><a href="about.html">About</a></li>
+      </ul>
+    </nav>
+    <main>
+      <section class="profile"> <img src="img/anime.jpg" alt="Profile Picture" class="profile-image">
+        <div class="profile-info">
+          <h2 class="glitter-text">About Me</h2>
+          <p>Hey there! Thanks for visiting my blog. I'm just a girl living in a spooky world.</p>
+          <p>Mood: Nostalgic 😊</p>
+          <p>Music: Listening to some pop punk</p>
+        </div>
+      </section>
+      <section class="blog-post">
+        <h3 class="blog-title">My Latest Blog Post</h3>
+        <p>I've been seeing some peculiar things... Anyone else too or am I crazy....?</p>
+      </section>
+      <section class="friend-space">
+        <h3 class="glitter-text">My Top Friends</h3>
+        <div class="friend-grid">
+          <div class="friend"> <img src="img/rabbitpf.png" alt="pf1">
+            <p>noblesseluv67</p>
+          </div>
+          <div class="friend"> <img src="img/prettypf.png" alt="pf2">
+            <p>user1390345</p>
+          </div>
+          <div class="friend"> <img src="img/manpf.jpg" alt="pf3">
+            <p>darkness78</p>
+          </div>
+          <div class="friend"> <img src="img/artsypf.png" alt="pf4">
+            <p>bingbong215</p>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+  <!-- At the bottom of each HTML file, just before </body> -->
+  <script>
+  const menuIcon = document.querySelector('.menu-icon');
+  const closeIcon = document.querySelector('.close-icon');
+  const navLinks = document.querySelector('.nav-links');
+  const mainNav = document.querySelector('.main-nav');
+  menuIcon.addEventListener('click', () => {
+    navLinks.classList.toggle('active');
+    mainNav.classList.toggle('active');
+    menuIcon.style.display = 'none';
+    closeIcon.style.display = 'block';
+  });
+  closeIcon.addEventListener('click', () => {
+    navLinks.classList.remove('active');
+    mainNav.classList.remove('active');
+    menuIcon.style.display = 'block';
+    closeIcon.style.display = 'none';
+  });
+  </script>
+</body>
+
+</html>

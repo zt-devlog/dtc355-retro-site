@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="nav" href="nav.html">
+    <script src="comments.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deliah's Video Blog Space</title>
+    <style>
+        * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: "Comic Sans MS", cursive;
+    background: #003366 url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10 10"><rect width="10" height="10" fill="%23002244"/><circle cx="5" cy="5" r="0.5" fill="%23004488"/></svg>') repeat;
+    color: #FFFFFF;
+    line-height: 1.6;
+}
+
+/* Navigation Styles */
+.main-nav {
+    width: 100%;
+    background: linear-gradient(to bottom, #000033, #000066);
+    padding: 1rem;
+    border: 3px solid #6699CC;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+    position: relative;
+}
+
+.nav-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 1rem;
+}
+
+.nav-header h1 {
+    margin: 0;
+    font-size: 1rem;
+}
+
+.menu-icon {
+    display: none;
+ /* Hidden by default on desktop */
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.5rem;
+    cursor: pointer;
+    padding: 0.5rem;
+    transition: transform 0.3s ease;
+}
+
+.menu-icon:hover {
+    transform: scale(1.1);
+}
+
+.nav-links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.nav-links li {
+    margin: 0;
+}
+
+.nav-links a {
+    display: block;
+    color: white;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    border: 2px solid #6699CC;
+    border-radius: 20px;
+    transition: all 0.3s;
+}
+
+.nav-links a:hover {
+    background: linear-gradient(to bottom, #6699CC, #336699);
+    transform: scale(1.05);
+    box-shadow: 0 0 10px rgba(102, 153, 204, 0.8);
+}
+
+/* Mobile Navigation */
+@media (max-width: 768px) {
+    #ham-icon {
+        padding: 5px;
+        position: relative;
+        top: 3px;
+        left: 5px;
+    }
+
+    #close-icon {
+        display: none;
+ /* Hide close icon by default */
+        padding: 5px;
+        position: relative;
+        top: 3px;
+        left: 5px;
+    }
+
+    .nav-links {
+        display: none;
+ /* Hide links by default on mobile */
+        flex-direction: column;
+        text-align: center;
+        padding-top: 1rem;
+    }
+
+    .nav-links.active {
+        display: flex;
+ /* Show links when active class is added */;
+    }
+
+    .main-nav.active #ham-icon {
+        display: none;
+ /* Hide hamburger when menu is open */;
+    }
+
+    .main-nav.active #close-icon {
+        display: block;
+ /* Show close icon when menu is open */;
+    }
+
+    .nav-links li {
+        margin: 0.5rem 0;
+    }
+
+    .nav-links a {
+        width: 100%;
+    }
+}
+
+/* Mobile Navigation */
+@media (min-width: 769px) {
+    .menu-icon,
+  .close-icon {
+        display: none;
+    }
+}
+
+@media (max-width: 768px) {
+    .menu-icon {
+        display: block;
+        background: none;
+        border: none;
+        color: white;
+        font-size: 1.5rem;
+        cursor: pointer;
+        padding: 0.5rem;
+        transition: transform 0.3s ease;
+    }
+
+    .close-icon {
+        display: none;
+        background: none;
+        border: none;
+        color: white;
+        font-size: 1.5rem;
+        cursor: pointer;
+        padding: 0.5rem;
+        transition: transform 0.3s ease;
+    }
+
+    .main-nav.active .menu-icon {
+        display: none;
+    }
+
+    .main-nav.active .close-icon {
+        display: block;
+    }
+
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        text-align: center;
+        padding-top: 1rem;
+    }
+
+    .nav-links.active {
+        display: flex;
+    }
+
+    .nav-links li {
+        margin: 0.5rem 0;
+    }
+
+    .nav-links a {
+        width: 100%;
+    }
+}
+
+.container {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 1rem;
+    background: rgba(0, 0, 51, 0.8);
+    border: 3px solid #6699CC;
+    border-radius: 8px;
+    box-shadow: 0 0 20px rgba(102, 153, 204, 0.5);
+}
+
+.header {
+    background: linear-gradient(to bottom, #000033, #000066);
+    padding: 1.5rem;
+    border: 3px solid #6699CC;
+    border-radius: 8px;
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.header h1 {
+    font-size: 2.5rem;
+    text-shadow: 2px 2px 4px #6699CC;
+    margin: 0;
+}
+
+.glitter-text {
+    background: linear-gradient(90deg, 
+                #ff0000, #ff7f00, #ffff00, #00ff00, 
+                #0000ff, #4b0082, #8f00ff, #ff0000);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    animation: rainbow 6s linear infinite;
+    text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+}
+
+@keyframes rainbow {
+    0% {
+        background-position: 0% center;
+    }
+
+    100% {
+        background-position: 200% center;
+    }
+}
+
+.video-section {
+    background: linear-gradient(to bottom, #000033, #000066);
+    padding: 1.5rem;
+    border: 3px solid #6699CC;
+    border-radius: 8px;
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+.video-container {
+    position: relative;
+    padding-bottom: 56.25%;
+    height: 0;
+    overflow: hidden;
+    margin: 1rem 0;
+    border: 2px solid #6699CC;
+    border-radius: 4px;
+    background: #000;
+}
+
+.video-container img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.video-stats {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 1rem;
+    padding: 0.5rem;
+    background: rgba(0, 0, 51, 0.5);
+    border: 1px solid #6699CC;
+    border-radius: 4px;
+}
+
+.video-section video {
+    width: 100%;
+ /* Ensures the video scales to the container */
+    height: auto;
+ /* Maintains aspect ratio */
+    display: block;
+ /* Prevents hiding */;
+}
+
+.stat-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: #99CCFF;
+}
+
+.blog-post {
+    background: linear-gradient(to bottom, #000033, #000066);
+    padding: 1.5rem;
+    border: 3px solid #6699CC;
+    border-radius: 8px;
+    margin-bottom: 1.5rem;
+}
+
+.comments-section {
+    background: linear-gradient(to bottom, #000033, #000066);
+    padding: 1.5rem;
+    border: 3px solid #6699CC;
+    border-radius: 8px;
+}
+
+.comment-form {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid #6699CC;
+}
+
+.comment-avatar {
+    width: 50px;
+    height: 50px;
+    border: 2px solid #6699CC;
+    border-radius: 4px;
+}
+
+.comment-input {
+    flex: 1;
+    background: rgba(0, 0, 51, 0.5);
+    border: 2px solid #6699CC;
+    border-radius: 4px;
+    padding: 0.5rem;
+    color: white;
+    font-family: "Comic Sans MS", cursive;
+    resize: none;
+}
+
+.comment-input:focus {
+    outline: none;
+    border-color: #99CCFF;
+    box-shadow: 0 0 10px rgba(102, 153, 204, 0.5);
+}
+
+.comments-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.comment {
+    display: flex;
+    gap: 1rem;
+    padding: 1rem;
+    background: rgba(0, 0, 51, 0.5);
+    border: 1px solid #6699CC;
+    border-radius: 4px;
+    transition: transform 0.2s;
+}
+
+.comment:hover {
+    transform: translateX(10px);
+    background: rgba(102, 153, 204, 0.1);
+}
+
+.comment-content {
+    flex: 1;
+}
+
+.comment-header {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.comment-username {
+    color: #99CCFF;
+    font-weight: bold;
+}
+
+.comment-time {
+    color: #6699CC;
+    font-size: 0.8rem;
+}
+
+.comment-actions {
+    display: flex;
+    gap: 1rem;
+    margin-top: 0.5rem;
+    color: #6699CC;
+    font-size: 0.9rem;
+}
+
+.action-button {
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+    cursor: pointer;
+    transition: color 0.2s;
+}
+
+.action-button:hover {
+    color: #99CCFF;
+}
+
+@media (max-width: 768px) {
+    .container {
+        margin: 10px;
+        padding: 0.5rem;
+    }
+
+    .header h1 {
+        font-size: 2rem;
+    }
+
+    .video-stats {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 1rem;
+    }
+
+    .comment-form {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .comment {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .comment-actions {
+        justify-content: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .header h1 {
+        font-size: 1.5rem;
+    }
+
+    .comment-avatar {
+        width: 40px;
+        height: 40px;
+    }
+}
+   </style>
+
+<body>
+    <div class="container">
+        <header class="header">
+            <h1 class="glitter-text">Deliah's Video Blog Space</h1> </header>
+        <nav class="main-nav">
+            <div class="nav-header">
+                <button class="menu-icon">☰</button>
+                <button class="close-icon">✕</button>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="postone.html">Post #1</a></li>
+                <li><a href="posttwo.html">Post #2</a></li>
+                <li><a href="postthree.html">Post #3</a></li>
+                <li><a href="about.html">About</a></li>
+            </ul>
+        </nav>
+        <section class="video-section">
+            <h2 class="glitter-text">🎥 Spooky Video Part 2</h2>
+            <div class="video-container">
+                <div style="padding:56.25% 0 0 0;position:relative;">
+                    <iframe src="https://player.vimeo.com/video/1030099510?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write" style="position:absolute;top:0;left:0;width:100%;height:100%;" title="post two video final"></iframe>
+                </div>
+                <script src="https://player.vimeo.com/api/player.js"></script>
+            </div>
+            <div class="video-stats">
+                <div class="stat-item">👀 Views: 1,337</div>
+                <div class="stat-item">👍 Likes: 242</div>
+                <div class="stat-item">💖 Favorites: 56</div>
+                <div class="stat-item">💭 Comments: 45</div>
+            </div>
+        </section>
+        <section class="blog-post">
+            <div style="color: #99CCFF; margin-bottom: 1rem;"> ⭐ ok guys this is creepy ⭐ </div>
+            <p>
+                <br>Posted by DarkestDreams93 on 10/15/2003 at 9:23 PM
+                <br>
+                <br>THE FOLLOWING - Part 2: They're Getting Closer OMG you guys. First, thank you SO MUCH for all the comments on my last post. I thought I was going crazy, but some of your stories... I can barely type this.
+                <br>
+                <br>Today after school I decided to try and document what's been happening. I used my mom's new camcorder (don't tell her lol). I was just walking around the house, talking to the camera about everything that's been going on. You know those ghost hunter shows on TV? I was trying to be all professional like that.
+                <br>
+                <br>At first nothing happened and I felt kind of stupid. I felt stupid when I brought the camcorder to my part time job, and recorded some random moments for the fun of it. I like messing around with video equipment. But...I just got done reviewing the tape and I'm freaking out. In the footage, while I'm at work doing my tasks, I just let the camcorder record... and there's this... THING. I reviewed the footage and found the above on my memory card. But I DIDN'T SEE IT WHEN I WAS FILMING. It's this dark, person-shaped shadow, but like... wrong somehow? The proportions aren't quite right. And it moved so smoothly, like it was gliding instead of walking. I almost dropped the camcorder when I saw it during playback. But that's not even the worst part. When I went back to check the hallway (I know, I know, stupid horror movie mistake, but I had one of those gut feelings), there were MORE OF THEM. Like, at least three shadow figures, just standing at the end of the hall. I ran to my room and I've been here ever since.
+                <br>
+                <br>Mom keeps asking if I'm feeling okay because I wouldn't come down for dinner. How am I supposed to explain this??? "Sorry Mom, can't eat because shadow people are haunting our hallway"??? Yeah, right. She already thinks I spend too much time online reading "crazy stories" (her words, not mine).
+                <br>
+                <br>The scary thing is, I keep seeing more and more of them. It's like once you notice one, they ALL start showing up. Like they know you can see them. I'm going to try and get more footage tomorrow. If anything happens to me, at least there'll be evidence.
+                <br>
+                <br>Stay safe everyone.
+                <br> Deliah
+                <br>P.S. - To everyone saying it's just my imagination or I'm making this up for attention: I WISH I was making this up. I really, really do.
+                <br> </p>
+            <p style="margin-top: 1rem; color: #99CCFF;"> Current Mood: possibly going crazy
+                <br> Current Song: blind - Korn </p>
+        </section>
+        <section class="comments-section">
+            <div class="comment-form"> <img src="img/anime.jpg" alt="Your avatar" class="comment-avatar">
+                <textarea class="comment-input" rows="3" placeholder="Add a comment..."></textarea>
+            </div>
+            <div class="comments-list">
+                <div class="comment"> <img src="img/dragon.jpg" alt="User avatar" class="comment-avatar">
+                    <div class="comment-content">
+                        <div class="comment-header"> <span class="comment-username">VampireLady666</span> <span class="comment-time">2 hours ago</span> </div>
+                        <div class="comment-text"> I am HORRIFIED. I am HORRIFIED. Thats really creepy. At your WORK?! </div>
+                        <div class="comment-actions"> <span class="action-button">👍 Like (23)</span> <span class="action-button">💬 Reply</span> </div>
+                    </div>
+                </div>
+                <div class="comment"> <img src="img/batman.jpg" alt="User avatar" class="comment-avatar">
+                    <div class="comment-content">
+                        <div class="comment-header"> <span class="comment-username">GODIVAMANISSINGLE</span> <span class="comment-time">5 hours ago</span> </div>
+                        <div class="comment-text"> Excuse me, but what video editor do you use? </div>
+                        <div class="comment-actions"> <span class="action-button">👍 Like (15)</span> <span class="action-button">💬 Reply</span> </div>
+                    </div>
+                </div>
+                <div class="comment"> <img src="img/pug.jpg" alt="User avatar" class="comment-avatar">
+                    <div class="comment-content">
+                        <div class="comment-header"> <span class="comment-username">.:~Sarah~:.</span> <span class="comment-time">1 day ago</span> </div>
+                        <div class="comment-text"> Smart Choice bringing the camcorder to work. Wow. I thought I was going crazy too. I cannot believe im not alone in this. I found your blog by concidence. </div>
+                        <div class="comment-actions"> <span class="action-button">👍 Like (8)</span> <span class="action-button">💬 Reply</span> </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const hamIcon = document.getElementById('ham-icon');
+        const closeIcon = document.getElementById('close-icon');
+        const navLinks = document.querySelector('.nav-links');
+        const mainNav = document.querySelector('.main-nav');
+
+        function toggleMenu() {
+            mainNav.classList.toggle('active');
+            navLinks.classList.toggle('active');
+            hamIcon.style.display = mainNav.classList.contains('active') ? 'none' : 'block';
+            closeIcon.style.display = mainNav.classList.contains('active') ? 'block' : 'none';
+        }
+        hamIcon.addEventListener('click', toggleMenu);
+        closeIcon.addEventListener('click', toggleMenu);
+    });
+    const menuIcon = document.querySelector('.menu-icon');
+    const closeIcon = document.querySelector('.close-icon');
+    const navLinks = document.querySelector('.nav-links');
+    const mainNav = document.querySelector('.main-nav');
+    menuIcon.addEventListener('click', () => {
+        navLinks.classList.toggle('active');
+        mainNav.classList.toggle('active');
+        menuIcon.style.display = 'none';
+        closeIcon.style.display = 'block';
+    });
+    closeIcon.addEventListener('click', () => {
+        navLinks.classList.remove('active');
+        mainNav.classList.remove('active');
+        menuIcon.style.display = 'block';
+        closeIcon.style.display = 'none';
+    });
+    </script>
+</body>
+
+</html>
